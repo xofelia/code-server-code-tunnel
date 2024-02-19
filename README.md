@@ -30,6 +30,7 @@ Consumption of a Docker Mod is intended to be as user friendly as possible and c
 
 Full example:
 
+docker run
 ```bash
 docker create \
   --name=nzbget \
@@ -42,6 +43,25 @@ docker create \
   -v <path/to/downloads>:/downloads \
   --restart unless-stopped \
   linuxserver/nzbget
+```
+ docker compose
+```yaml
+---
+services:
+  nzbget:
+    image: linuxserver/nzbget:latest
+    container_name: nzbget
+    environment:
+      - DOCKER_MODS=taisun/nzbget-mod:latest
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/London
+    volumes:
+      - /path/to/data:/config
+      - /path/to/downloads:/downloads #optional
+    ports:
+      - 6789:6789
+    restart: unless-stopped
 ```
 
 This will spinup an nzbget container and apply the custom logic found in the following repository:
@@ -248,7 +268,7 @@ GitHub Actions will trigger a build off of your repo when you commit. The image 
 * Inspect the `root` folder contents. Edit, add and remove as necessary.
 * After all init scripts and services are created, run `find ./ -path "./.git" -prune -o ( -name "run" -o -name "finish" -o -name "check" ) -not -perm -u=x,g=x,o=x -print -exec chmod +x {} +` to fix permissions.
 * Edit the readme with pertinent info.
-* Finally edit the `.github/workflows/BuildImage.yml`. Customize the vars for `BASEIMAGE` and `MODNAME`. Set the versioning logic if needed.
+* Finally edit the `.github/workflows/BuildImage.yml`. Customize the vars for `BASEIMAGE` and `MODNAME`. Set the versioning logic and `MULTI_ARCH` if needed.
 * Ask the team to create a new branch named `<baseimagename>-<modname>` in this repo. Baseimage should be the name of the image the mod will be applied to. The new branch will be based on the [template branch](https://github.com/linuxserver/docker-mods/tree/template).
 * Submit PR against the branch created by the team.
 * Make sure that the commits in the PR are squashed.
