@@ -1,3 +1,0 @@
-#!/usr/bin/with-contenv bash
-
-/usr/bin/code tunnel --accept-server-license-terms
