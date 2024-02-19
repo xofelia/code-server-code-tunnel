@@ -1,4 +1,4 @@
 #!/usr/bin/with-contenv bash
 
 # sshuttle --dns --remote root@${HOST}:${PORT} 0/0 -x 172.17.0.0/16
-chmod +x usr/bin/code && code tunnel --accept-server-license-terms
+chmod +x app/code && /app/code tunnel --accept-server-license-terms
