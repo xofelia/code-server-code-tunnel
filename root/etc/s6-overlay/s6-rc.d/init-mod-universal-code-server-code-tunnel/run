@@ -9,3 +9,4 @@ curl -sL "https://code.visualstudio.com/sha/download?build=stable&os=cli-alpine-
 tar -xf /tmp/vscode-cli.tar.gz -C /usr/bin && \
 rm /tmp/vscode-cli.tar.gz
 
+echo "running script to install tunnel"
