@@ -1,4 +1,0 @@
-#!/usr/bin/with-contenv bash
-
-echo "running service"
-/usr/bin/code tunnel --accept-server-license-terms

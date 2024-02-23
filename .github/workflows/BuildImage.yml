@@ -5,12 +5,11 @@ on: [push, pull_request, workflow_dispatch]
 env:
   ENDPOINT: "xofelia/code-server-code-tunnel"
   BRANCH: "main"
-  BASEIMAGE: "linuxserver/code-server"
-  MODNAME: "code-server-code-tunnel"
+  BASEIMAGE: "alpine:latest"
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: alpine-latest
     steps:
       - uses: actions/checkout@v2.3.3
 
