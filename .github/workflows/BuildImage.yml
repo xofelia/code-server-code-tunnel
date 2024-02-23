@@ -3,9 +3,8 @@ name: Build Image
 on: [push, pull_request, workflow_dispatch]
 
 env:
-  ENDPOINT: "xofelia/code-server-code-tunnel"
+  ENDPOINT: "xofelia/code-tunnel"
   BRANCH: "main"
-  BASEIMAGE: "alpine:latest"
 
 jobs:
   build:
